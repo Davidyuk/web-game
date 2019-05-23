@@ -8,7 +8,6 @@
 </head>
 <body>
 
-<a id="disable-webgl" href="#"></a> <a id="hide-objects" href="#"></a><br>
 <div id="render"></div>
 <div id="info"></div>
 
@@ -18,7 +17,7 @@
             function(Engine, $) {
                 var pageParams = {
                     noWebGL: window.location.hash.indexOf('canvas') != -1,
-                    showObjects: window.location.hash.indexOf('hideObjects') == -1
+                    showObjects: false
                 };
 
                 function reloadPage(param) {
@@ -38,7 +37,7 @@
                 $hideObjects.text((pageParams.showObjects ? 'Hide' : 'Show') + ' objects');
                 $hideObjects.click(reloadPage('showObjects'));
 
-                var engine = new Engine(500, 500, sendShips, pageParams.noWebGL);
+                var engine = new Engine(1600, 900, sendShips, pageParams.noWebGL);
                 $('#render').replaceWith(engine.view);
 
                 var testMessage = [{
